@@ -1,0 +1,15 @@
+# Web framework
+fastapi==0.110.1
+uvicorn[standard]==0.25.0
+starlette==0.37.2
+
+# HTTP client (for Open-Meteo API calls)
+httpx==0.28.1
+
+# Data & ML
+numpy==2.4.3
+scikit-learn==1.8.0
+
+# Pydantic & env
+pydantic==2.12.5
+python-dotenv==1.2.2

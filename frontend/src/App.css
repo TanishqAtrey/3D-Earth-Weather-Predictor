@@ -1,0 +1,193 @@
+/* ── Globe Container ────────────────────────────────────────────────────────── */
+.globe-container {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  cursor: grab;
+}
+
+.globe-container:active {
+  cursor: grabbing;
+}
+
+.globe-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  outline: none;
+}
+
+/* ── UI Overlay Layer ──────────────────────────────────────────────────────── */
+.ui-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .ui-overlay {
+    padding: 2rem;
+  }
+}
+
+/* ── Weather Panel ─────────────────────────────────────────────────────────── */
+.weather-panel {
+  pointer-events: auto;
+  width: 100%;
+  max-width: 400px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.weather-panel::-webkit-scrollbar {
+  width: 4px;
+}
+
+.weather-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.weather-panel::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ── Metric Cards ──────────────────────────────────────────────────────────── */
+.metric-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.metric-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(0, 229, 255, 0.15);
+}
+
+/* ── Loading Indicator ─────────────────────────────────────────────────────── */
+.loader-ring {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.loader-pulse {
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* ── Header Badge ──────────────────────────────────────────────────────────── */
+.header-badge {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 20;
+  pointer-events: auto;
+}
+
+/* ── Instruction Toast ─────────────────────────────────────────────────────── */
+.instruction-toast {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  pointer-events: none;
+  animation: fadeInUp 0.6s ease-out, fadeOut 0.6s ease-in 4s forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* ── Close Button ──────────────────────────────────────────────────────────── */
+.close-btn {
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #00E5FF;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .ui-overlay {
+    padding: 0.75rem;
+    align-items: flex-end;
+  }
+
+  .weather-panel {
+    max-width: 100%;
+    max-height: 60vh;
+    border-radius: 1rem 1rem 0 0;
+  }
+}
+
+/* ── Chart tooltip ─────────────────────────────────────────────────────────── */
+.forecast-tooltip {
+  background: rgba(0, 0, 0, 0.85) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 229, 255, 0.2) !important;
+  border-radius: 0.5rem !important;
+  padding: 0.5rem 0.75rem !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Model info tag ────────────────────────────────────────────────────────── */
+.model-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: rgba(0, 229, 255, 0.1);
+  color: #00E5FF;
+  border: 1px solid rgba(0, 229, 255, 0.2);
+}
